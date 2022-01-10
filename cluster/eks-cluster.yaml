@@ -1,0 +1,48 @@
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+iam:
+  withOIDC: true
+
+metadata:
+  name: eks-cluster
+  version: "1.21"
+  region: ap-southeast-1
+
+addons:
+- name: vpc-cni
+  version: v1.10.1-eksbuild.1
+  attachPolicyARNs:
+  - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+
+- name: coredns
+  version: v1.8.4-eksbuild.1
+
+- name: kube-proxy
+  version: v1.21.2-eksbuild.2
+
+vpc: #<-- change the correct values
+  id: vpc-1234567890abcdef0
+  subnets:
+    private:
+      ap-southeast-1a:
+        id: "subnet-1234567890abcdef0"
+      ap-southeast-1b:
+        id: "subnet-abcdef01234567890"
+      ap-southeast-1c:
+        id: "subnet-021345abcdef6789"
+
+managedNodeGroups:
+  - name: pri-ng
+    instanceType: m5.xlarge
+    desiredCapacity: 3
+    privateNetworking: true
+    iam:
+      attachPolicyARNs:
+      - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+      - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+      - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+      - arn:aws:iam::aws:policy/CloudWatchAgentAdminPolicy
