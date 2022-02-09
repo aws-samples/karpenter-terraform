@@ -6,7 +6,7 @@ cluster_name               = "eks-cluster"
 karpenter_target_nodegroup = "pri-ng"
 
 karpenter_namespace = "karpenter"
-karpenter_version   = "0.5.4"
+karpenter_version   = "0.6.1"
 
 # The variables below are used for the default Karpenter Provisioner that is deployed in this script
 karpenter_ec2_instance_types = [
