@@ -74,6 +74,7 @@ resource "aws_iam_role" "karpenter_node" {
   ]
 }
 
+## Instance profile for nodes to pull images, networking, SSM, etc
 resource "aws_iam_instance_profile" "karpenter_node" {
   name = "karpenter-node-${var.cluster_name}"
   role = aws_iam_role.karpenter_node.name

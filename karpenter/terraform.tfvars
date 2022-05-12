@@ -2,11 +2,11 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # Adjust to your own cluster and nodegroup name
-cluster_name               = "eks-cluster"
-karpenter_target_nodegroup = "pri-ng"
+cluster_name               = "bcs-eksctl-sandbox-cluster"
+karpenter_target_nodegroup = "ng-managed-workers-spot"
 
 karpenter_namespace = "karpenter"
-karpenter_version   = "0.6.1"
+karpenter_version   = "v0.10.0"
 
 # The variables below are used for the default Karpenter Provisioner that is deployed in this script
 karpenter_ec2_instance_types = [

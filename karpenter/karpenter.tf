@@ -10,9 +10,10 @@ resource "helm_release" "karpenter" {
   create_namespace = true
 
   name       = "karpenter"
-  repository = "https://charts.karpenter.sh"
+  repository = "https://charts.karpenter.sh/"
   chart      = "karpenter"
   version    = var.karpenter_version
+
 
   values = [
     templatefile(
