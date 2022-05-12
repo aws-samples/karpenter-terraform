@@ -14,7 +14,7 @@ variable "karpenter_namespace" {
 
 variable "karpenter_version" {
   description = "Karpenter Version"
-  default     = "0.5.2"
+  default     = "0.10.0"
   type        = string
 }
 
@@ -25,7 +25,7 @@ variable "karpenter_target_nodegroup" {
 
 variable "bottlerocket_k8s_version" {
   description = "Kubernetes version for Bottlerocket AMI"
-  default     = "1.21"
+  default     = "1.22"
   type        = string
 }
 
